@@ -6,14 +6,15 @@
 
 ## 📌 Description
 
-Cet exercice permet de découvrir l’intégration continue (**CI – Continuous Integration**) avec GitHub Actions en exécutant automatiquement des tests à chaque **push** ou **pull request**.
+Cet exercice permet de découvrir la **CI (Intégration Continue)** grâce à GitHub Actions.
+L’objectif est de lancer automatiquement un test à chaque **push** ou **pull request** sur GitHub.
 
-🎯 **Objectif :** vérifier automatiquement que le code fonctionne avant validation.
-🧪 **Méthode :** exécuter un test Node.js dans la pipeline CI.
-📈 **Résultat possible :**
+🎯 **But :** vérifier la qualité du code avant validation
+🧪 **Méthode :** exécuter automatiquement un test Node.js
+📈 **Résultat attendu :**
 
-* ✔ **Pipeline VERT** si les tests passent
-* ❌ **Pipeline ROUGE** si les tests échouent
+* 🟢 pipeline vert → tests valides
+* 🔴 pipeline rouge → tests échoués
 
 ---
 
@@ -106,23 +107,32 @@ Résultat attendu :
 ```
 git init
 git add .
-git commit -m "Exercice CI/CD fonction isEven"
+git commit -m "Exercice CI/CD isEven"
 git branch -M main
-git remote add origin https://github.com/<TON_COMPTE>/<TON_REPO>.git
+git remote add origin https://github.com/TON_COMPTE/TON_REPO.git
 git push -u origin main
 ```
 
 Ensuite :
 
-1. Ouvre ton dépôt GitHub
-2. Va dans **l’onglet Actions**
-3. Le workflow s’exécute automatiquement ✔
+1. Aller dans **Actions**
+2. Observer le workflow exécuté automatiquement
+3. Le badge (si ajouté dans le README) indique :
 
-👉 Si l’état est **VERT**, ta CI fonctionne parfaitement.
+* 🟢 **passing** si tout fonctionne
+* 🔴 **failing** si un test échoue
 
 ---
 
-## 🔥 Mettre volontairement le pipeline au ROUGE
+## 🔧 Exercice pratique à réaliser
+
+### 🎯 Objectif
+
+Faire échouer volontairement le pipeline, puis le faire repasser au vert.
+
+---
+
+### Étape 1 — Mettre le pipeline au ROUGE
 
 Dans `test.js`, remplace :
 
@@ -141,34 +151,46 @@ Puis :
 ```
 npm test
 git add .
-git commit -m "Test volontaire KO"
+git commit -m "Test KO volontaire"
 git push
 ```
 
-Résultat dans GitHub Actions :
+👉 **Le pipeline devient 🔴 et le badge passe en failing**
 
-❌ **Test échoué → pipeline rouge**
+---
+
+### Étape 2 — Repasse au VERT
+
+Corrige le code ou le test, puis :
+
+```
+git add .
+git commit -m "correction test"
+git push
+```
+
+👉 **Le badge redevient 🟢 et le pipeline repasse au vert**
 
 ---
 
 ## 🎓 Compétences travaillées
 
-| Compétence          | Détail                                         |
-| ------------------- | ---------------------------------------------- |
-| **CI/CD**           | Mise en place d’une pipeline GitHub Actions    |
-| **Qualité du code** | Exécution automatique de tests                 |
-| **Collaboration**   | Validation automatique avant merge             |
-| **DevOps**          | Automatisation & industrialisation du workflow |
+| Compétence           | Objectif                                   |
+| -------------------- | ------------------------------------------ |
+| CI/CD                | Mise en place d’un workflow GitHub Actions |
+| Qualité logicielle   | Tests automatisés                          |
+| DevOps               | Automatisation du processus                |
+| Travail collaboratif | Empêche le merge de code cassé             |
 
 ---
 
 ## 🎉 Conclusion
 
-Vous venez de mettre en place :
+Vous avez mis en place :
 
 ✔ un projet Node.js
 ✔ un test automatisé
-✔ un workflow CI GitHub Actions
-✔ un contrôle automatique de la qualité du code
+✔ un workflow CI
+✔ un badge de statut dynamique
 
-🧠 **C’est une compétence essentielle en entreprise dans tous les projets modernes.**
+💼 **C’est la base de la qualité logicielle en entreprise.**
